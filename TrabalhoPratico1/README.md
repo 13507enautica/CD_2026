@@ -1,7 +1,7 @@
-# Trabalho Prático Fase 1 (Grupo )
+# Trabalho Prático Fase 1 (Grupo 9)
 
 Curso : Computação Distribuída
-Grupo: 
+Grupo: 9
 Estudantes Autores : Duarte Vale Nº13507, Guilherme Bento Nº13744
 Date : 23/04/2026
 Repository URL : Link(https://github.com/13507enautica/CD_2026)
