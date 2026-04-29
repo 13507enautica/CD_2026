@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+		
+        <title>Play video using JW Plawyer</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="stylesheet" type="text/css" href="/static/styles/GlobalStyle.css">
+		<link rel="stylesheet" type="text/css" href="/static/styles/Videos.css">
+        
+        <script type="text/javascript" src="/static/jwplayer6/jwplayer.js"> </script>
+
+        <script type="text/javascript">
+            function initVideo(containerID) {
+                jwplayer( containerID ).setup( {
+                    allowfullscreen: true,
+                    allowscriptaccess: "always",
+                    volume: 80,
+                    primary: "flash",
+                    autostart: "false",
+                    author: "Carlos Gonçalves",
+                    date: "April 01 2018 00:06:27",
+                    width: 640,
+                    height: 480,
+                    playlist: [
+                    {
+                        title: "Um filme",
+                        description: "Mais um filme por ai...",
+                        image: "/static/Videos/movie1.png",
+                        sources: [
+                            {
+                                file: "/static/Videos/movie1.mp4",
+                                type: "mp4"
+                            }
+                        ],
+                        tracks: [
+                            {
+                                file: "/static/VTT/Subtitles/movie1-pt.vtt",
+                                label: "Português",
+                                kind: "Subtitles",
+                                "default": true
+                            },
+                            {
+                                file: "/static/VTT/Subtitles/movie1-en.vtt",
+                                label: "English",
+                                kind: "Subtitles",
+                                "default": false
+                            },
+                            {
+                                file: "/static/VTT/Subtitles/movie1-fr.vtt",
+                                label: "Français",
+                                kind: "Subtitles",
+                                "default": false
+                            },
+                            {
+                                file: "/static/VTT/Thumbnails/movie1.vtt",
+                                kind: "thumbnails"
+                            }
+                        ]
+                    }
+                ] } );
+            }
+        </script>
+    </head>
+
+    <body onload="initVideo( 'container' )">
+
+        <h1>Player with JW Player (JavaScript)</h1>
+        
+        <div class="MyVideoPlayer">
+            <div id="container">JW Player is loading...</div>
+        </div>
+
+        <p><a href='javascript:history.back()'>Back</a></p>
+
+    </body>
+
+</html>

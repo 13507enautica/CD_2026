@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porto - Template</title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Registo</h1>
+        <form id="register-form" method="POST" action="/doRegister">
+            <label for="fullname">Nome Completo:</label>
+            <input type="text" id="fullname" name="fullname" required>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+    
+            <label for="confirm-password">Confirmar Senha:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+    
+            <button type="submit">Registrar</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Porto. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            // Impede o envio do formulário até que as validações sejam concluídas
+            event.preventDefault();
+
+            // Obtendo os valores dos campos
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Validando os campos
+            if (!fullname || !email || !password || !confirmPassword) {
+                alert('Todos os campos são obrigatórios!');
+                return;
+            }
+
+            // Validando o formato do email
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                alert('Por favor, insira um email válido!');
+                return;
+            }
+
+            // Validando o comprimento da senha
+            if (password.length < 8) {
+                alert('A senha deve ter pelo menos 8 caracteres!');
+                return;
+            }
+
+            // Validando se as senhas coincidem
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+
+            // Se todas as validações forem aprovadas, o formulário será enviado
+            this.submit();
+        });
+    </script>
+</body>
+</html>

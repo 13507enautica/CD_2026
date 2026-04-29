@@ -1,0 +1,269 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/static/Styles/port.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #333;
+}
+
+header {
+    background-color: #0077b6;
+    color: white;
+    padding: 1em 0;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+.inicio_header {
+    background-color: #0077b6;
+    color: white;
+    height: 50px; /* Reduz a altura total da navbar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    padding: 0 1em; /* Adiciona algum espaçamento horizontal */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona um pequeno efeito de sombra */
+}
+
+.contentor_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%; /* Garante que os itens ocupem a altura da navbar */
+}
+
+.logotipo {
+    height: 30px; /* Define uma altura menor para o logotipo */
+    width: auto; /* Mantém as proporções */
+    cursor: pointer;
+    object-fit: contain; /* Garante que a imagem seja ajustada sem deformação */
+    
+}
+
+.lista_opcoes {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.lista_opcoes li {
+    margin: 0 0.5em; /* Reduz o espaço entre os itens */
+}
+
+.lista_opcoes li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px; /* Reduz o tamanho do texto */
+    font-weight: bold;
+}
+
+.imagem_inicial {
+    margin-top: 50px; /* Compensa a altura da navbar fixa */
+    background-image: url('/static/Styles/pagina_inicial.png');
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    margin: 0 1em;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 2em;
+    text-align: center;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background: white;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-top: 1em;
+}
+
+form input {
+    width: 100%;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    margin-top: 1em;
+    padding: 0.7em;
+    width: 100%;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #005f86;
+}
+
+footer {
+    text-align: center;
+    padding: 0.1em 0;
+    background-color: #0077b6;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+.inicio_header {
+    background-color: #0077b6;
+    color: white;
+    padding: 0.01em 0;
+}
+
+.imagem_inicial {
+    background-image: url('/static/Styles/pagina_inicial.png');
+    height: 100vh;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inicio_body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+
+    background-image: url('/static/Styles/port_blur_color.png');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contentor_header {
+    width: 55%;
+    height: 15vh;
+    position: relative;
+}
+
+.contentor_header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logotipo {
+    background-color: #e7edeb;
+    width: 107px;
+    cursor: pointer;
+}
+
+.lista_opcoes {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.lista_opcoes li {
+    margin: 0 1em;
+}
+
+.lista_opcoes li a {
+    color: white;
+    text-decoration: none;
+}
+
+.contentor_centro {
+    margin: auto;
+    background-color: #e7edeb;
+
+    display: grid;
+    text-align: center;
+    white-space: pre-line;
+    width: 95%;
+    height: 200vh;
+}
+
+.contentor_centro h1 {
+    font-size: 3em;
+    color: #273758;
+    white-space: pre-line;
+}
+
+.contentor_centro p {
+    padding: 0% 5%;
+    white-space: pre-line;
+}
+
+.contentor_centro img {
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.inicio_footer {
+    position:fixed;
+    bottom:0;
+}
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.message.success {
+    background-color: #4CAF50;
+}
+
+.message.error {
+    background-color: #f44336;
+}
