@@ -240,8 +240,7 @@ def book_stay():
         user_boats = recv_json(client)["boats"]
 
         requestj = {
-            "action": "/getUserPorts",
-            "data": {"user_id": user_id}
+            "action": "/getUserPorts"
         }
 
         send_json(client, requestj)

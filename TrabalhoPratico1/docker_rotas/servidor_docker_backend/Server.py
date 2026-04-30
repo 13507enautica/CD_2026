@@ -156,7 +156,7 @@ def book_stay():
     user_id = session['user']['id']
 
     user_boats = requests.post(DATABASE_URL+"/getUserBoats", json={"user_id": user_id}).json()["boats"]
-    available_ports = requests.post(DATABASE_URL+"/getUserPorts", json={"user_id": user_id}).json()["ports"]
+    available_ports = requests.get(DATABASE_URL+"/getUserPorts").json()["ports"]
 
     if not user_boats:
         return render_template('main.html', error="Você não possui barcos disponíveis. Cadastre um para continuar.",user=session['user'])

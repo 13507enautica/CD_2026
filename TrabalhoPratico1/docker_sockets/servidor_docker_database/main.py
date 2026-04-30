@@ -14,7 +14,26 @@ SERVER_PORT = int(os.getenv("SERVER_PORT"))
 
 def init_db():
     with open("db.json", "w", encoding="utf-8") as db:
-        data = {"users": [], "boats": [], "ports": [], "stays": []}
+        data = {"users": [], "boats": [], "ports": [
+        {
+            "id": 1,
+            "port_name": "Alpha",
+            "available": 1,
+            "boat_id": 0
+        },
+        {
+            "id": 2,
+            "port_name": "Beta",
+            "available": 1,
+            "boat_id": 0
+        },
+        {
+            "id": 3,
+            "port_name": "Charlie",
+            "available": 1,
+            "boat_id": 0
+        }
+    ], "stays": []}
         json.dump(data, db, indent=4, ensure_ascii=False)
 
 
