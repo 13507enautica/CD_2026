@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Estadia</title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body onload="showHide()">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/main">Início</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Reserva de Estadia</h1>
+
+        <!-- Exibição de mensagens de feedback -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="messages">
+                {% for category, message in messages %}
+                    <div class="message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+
+        <form id="book-stay-form" method="POST" action="/doBookStay">
+
+            <label for="stay-boat">Escolha uma embarcação:</label>
+            <select id="stay-boat" name="stay-boat" required>
+                {% for currentBoat in user_boats %}
+                    <option value="{{currentBoat['id']}}">Barco {{ currentBoat['name'] }}/{{ currentBoat['type'] }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="stay-desc">Descrição da Estadia:</label>
+            <input type="text" id="stay-desc" name="stay-desc" required>
+
+            <label for="stay-passagers">Número de Passageiros (0-9999):</label>
+            <input type="number" id="stay-passagers" name="stay-passagers" min="0" max="9999" required>
+
+            <label for="stay-loadsize" class="hidden">Tamanho de carga:</label>
+            <input type="number" id="stay-loadsize" name="stay-loadsize" class="hidden" min="0">
+
+            <label for="stay-port">Porto de Atracação:</label>
+            <select id="stay-port" name="stay-port" required>
+                {% for currentPort in boat_ports %}
+                    <option value="{{currentPort['id']}}">Porto {{ currentPort['port_name'] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="stay-date1">Tempo de chegada:</label>
+            <input type="datetime-local" id="stay-date1" name="stay-date1" required>
+            <label for="stay-date2">Tempo de partida:</label>
+            <input type="datetime-local" id="stay-date2" name="stay-date2" required>
+
+            <!-- Integração do Mapa -->
+            <h1>De Onde Veio?</h1>
+            <div>
+                <label for="latitude">Latitude:</label>
+                <input type="text" id="latitude" name="latitude" placeholder="Ex: 37.7749" required>
+                <label for="longitude">Longitude:</label>
+                <input type="text" id="longitude" name="longitude" placeholder="Ex: -122.4194" required>
+                <button id="updateMap" type="button">Atualizar Mapa</button>
+            </div>
+            <div id="mapid"></div>
+
+            <button type="submit">Reservar Estadia</button>
+        </form>
+    </main>
+
+    <footer class="inicio_footer">
+        <p>&copy; 2025 Porto. Todos os direitos reservados.</p>
+    </footer>
+
+    <style>
+        #mapid {
+            width: 100%;
+            height: 400px;
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <script>
+        const inputs = Array.prototype.slice.call(document.querySelectorAll("input.hidden"));
+        const labels = Array.prototype.slice.call(document.querySelectorAll("label.hidden"));
+
+        document.getElementById("stay-boat").addEventListener("change", showHide);
+
+        let dateTodayMin = new Date().toISOString().slice(0,new Date().toISOString().lastIndexOf(":"));
+        let dateMax = new Date('2035-01-01T00:00').toISOString().slice(0,new Date().toISOString().lastIndexOf(":"));
+        let dateInput1 = document.getElementById("stay-date1");
+        let dateInput2 = document.getElementById("stay-date2");
+        dateInput1.min = dateTodayMin
+        dateInput2.min = dateTodayMin
+
+        document.getElementById('book-stay-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const stayBoat = document.getElementById('stay-boat').value.trim();
+            const stayDesc = document.getElementById('stay-desc').value.trim();
+            const stayPassagers = document.getElementById('stay-passagers').value.trim();
+            const stayLoadsize = document.getElementById('stay-loadsize').value.trim();
+            const stayPort = document.getElementById('stay-port').value.trim();
+            const stayDate1 = document.getElementById('stay-date1').value.trim();
+            const stayDate2 = document.getElementById('stay-date2').value.trim();
+
+            if (!stayBoat || !stayDesc || !stayPassagers || !stayPort || !stayDate1 || !stayDate2) {
+                alert('Há campos obrigatórios vazios!');
+                return;
+            }
+
+            if (isNaN(stayPassagers) || stayPassagers < 0 || stayPassagers > 9999) {
+                alert('Por favor, insira um número de passageiros válido (entre 0 e 9999).');
+                return;
+            }
+
+            if (stayLoadsize && (isNaN(stayLoadsize) || stayLoadsize < 0)) {
+                alert('Tamanho de carga inválido! Deve ser 0 ou maior.');
+                return;
+            }
+
+            if (stayDate1 >= stayDate2) {
+                alert('A data de chegada não pode acontecer durante ou depois da data de partida. Corrija o seu erro.');
+                return;
+            }
+
+            if (stayDate1 < dateTodayMin || stayDate1 > dateMax || stayDate2 < dateTodayMin || stayDate2 > dateMax) {
+                alert('Nenhuma data de estadia pode ser menor que hoje ou maior que 1/1/2035 00:00. Por favor corrija as sua datas.');
+                return;
+            }
+
+            this.submit();
+        });
+
+        function showHide() {
+            const selection = document.getElementById("stay-boat");
+            const boatType = selection.options[selection.selectedIndex].text.split('/')[1];
+            
+            if (boatType === "pesca") {
+                document.getElementById("stay-loadsize").required = true;
+                inputs.forEach(input => input.classList.remove("hidden"));
+                labels.forEach(label => label.classList.remove("hidden"));
+            } else {
+                document.getElementById("stay-loadsize").required = false;
+                inputs.forEach(input => input.classList.add("hidden"));
+                labels.forEach(label => label.classList.add("hidden"));
+            }
+        }
+
+        let map;
+        function updateMap(lat, lon) {
+            if (map) map.remove();
+            map = L.map('mapid').setView([lat, lon], 13);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            L.marker([lat, lon]).addTo(map)
+                .bindPopup('Local inserido!')
+                .openPopup();
+        }
+
+        document.getElementById('updateMap').addEventListener('click', () => {
+            const lat = parseFloat(document.getElementById('latitude').value);
+            const lon = parseFloat(document.getElementById('longitude').value);
+            if (isNaN(lat) || isNaN(lon)) {
+                alert('Por favor, insira valores válidos para latitude e longitude.');
+                return;
+            }
+            updateMap(lat, lon);
+        });
+
+        navigator.geolocation.getCurrentPosition(
+            pos => updateMap(pos.coords.latitude, pos.coords.longitude),
+            err => console.log(err),
+            { enableHighAccuracy: true, timeout: 5000 }
+        );
+    </script>
+</body>
+</html>

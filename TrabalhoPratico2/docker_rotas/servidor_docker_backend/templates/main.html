@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main - Porto</title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Bem-vindo, {{ user.fullname }}</a></li>
+                <li><a href="/book-stay">Marcar Estadia</a></li>
+                <li><a href="/register-boat">Adicionar Navio</a></li>
+                {% if user.id < 6 %}
+                    <li><a href="/procura">Consultas</a></li>
+                {% endif %}
+                <li><a href="/logout">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Bem-vindo ao Porto</h1>
+        <p>Aproveite os nossos serviços portuários e explore tudo o que temos a oferecer.</p>
+        <section>
+            <h2>Serviços Disponíveis</h2>
+            <p>Planeje sua estadia conosco ou entre em contato para mais informações.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Porto. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

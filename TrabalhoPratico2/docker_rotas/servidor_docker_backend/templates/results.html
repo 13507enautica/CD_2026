@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Consulta</title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+        }
+
+
+        
+
+        .logotipo {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .lista_opcoes {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .lista_opcoes li {
+            margin-left: 20px;
+        }
+
+        .lista_opcoes a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .lista_opcoes a:hover {
+            color: #007BFF;
+        }
+
+        .contentor_centro {
+            flex: 1;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        
+
+        form {
+            margin-top: 20px;
+        }
+
+        #email-field, #date-field {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+            <nav>
+                <img class="logotipo" src="/static/Styles/logotipo.png" alt="Logotipo">
+                <ul>
+                    <li><a href="/procura">Voltar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="contentor_centro">
+        <h1>Resultado da Consulta</h1>
+        
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+
+        {% if boats %}
+            <h2>Barcos Encontrados</h2>
+            <table>
+                <tr>   
+                    <th>Foto</th>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Tipo de embarcação</th>
+                    <th>Email do Proprietário</th>
+                    <th>Ano de construção</th>
+                    <th>Tamanho em Metros</th>
+                    <th>Numero de Registo</th>
+                </tr>
+                {% for boat in boats %}
+                <tr>
+                    <td><img src="/static/Images/{{ boat.boat_image }}"</img></td>
+                    <td>{{ boat.id }}</td>
+                    <td>{{ boat.name }}</td>
+                    <td>{{ boat.type }}</td>
+                    <td>{{ boat.owner_email }}</td>
+                    <td>{{ boat.year_built }}</td>
+                    <td>{{ boat.length }}</td>
+                    <td>{{ boat.registration_number }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+        {% if stays %}
+    <h2>Estadias Encontradas</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>ID do Barco</th>
+            <th>Descrição</th>
+            <th>Passageiros</th>
+            <th>Tamanho da Carga</th>
+            <th>ID do Porto</th>
+            <th>Hora de Chegada</th>
+            <th>Hora de Partida</th>
+            <th>Localização (Latitude)</th>
+            <th>Localização (Longitude)</th>
+            <th>ID do Usuário</th>
+        </tr>
+        {% for stay in stays %}
+        <tr>
+            <td>{{ stay.id }}</td>
+            <td>{{ stay.boat_id }}</td>
+            <td>{{ stay.description }}</td>
+            <td>{{ stay.passengers }}</td>
+            <td>{{ stay.load_size }}</td>
+            <td>{{ stay.port_id }}</td>
+            <td>{{ stay.arrival_time }}</td>
+            <td>{{ stay.departure_time }}</td>
+            <td>{{ stay.location.latitude }}</td>
+            <td>{{ stay.location.longitude }}</td>
+            <td>{{ stay.user_id }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Porto. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
