@@ -17,16 +17,16 @@ O trabalho original para a unidade curricular de Programação Web (2024/2025) h
   
 A questão inicial do trabalho de Computação Distríbuida visa o ambito de obter e alterar o trabalho prático do semestre passado (ano passado neste caso) de modo a separar a funcionalidade original do servidor Python entre os seus components de gestão de dados e serviços de backend.  
 Estes dois servidores comunicam entre sí, exclusivamente por modo de mensagens no formato JSON, para que a informação da base de dados necessária para a devida página não seja acedida diretamente por um único servidor.  
-Por fim, há o requesito da implementação de um dockerfile com uma solução 'compose' de modo a que os servidores desenvolvidos possam ser instanciados em contentores pela aplicação, onde apenas o contentor web consegue ser acedido pelo dado host.
+Por fim, há o requesito da implementação de um dockerfile com uma solução 'compose' de modo a que os servidores desenvolvidos possam ser instanciados em contentores pela aplicação, onde apenas o contentor web consegue ser acedido pelo dado host.  
 
 
 ## Estrutura de Ficheiros
-• Ficheiro README.md (Relatório de trabalho)
-• Pasta "docker_sockets"
-&nbsp • Pasta "servidor_docker_backend" (Ficheiros de backend do servidor, destinados para o seu próprio contentor)
-&nbsp • Pasta "servidor_docker_database" (Ficheiros da base de dados do servidor, destinados para o seu próprio contentor)
-&nbsp • Ficheiro "docker-compose.yaml" (Configurações de contentores por modo de um ficheiro docker-compose)
-
+• Ficheiro README.md (Relatório de trabalho)  
+• Pasta "docker_sockets"  
+- • Pasta "servidor_docker_backend" (Ficheiros de backend do servidor, destinados para o seu próprio contentor)  
+- • Pasta "servidor_docker_database" (Ficheiros da base de dados do servidor, destinados para o seu próprio contentor)  
+- • Ficheiro "docker-compose.yaml" (Configurações de contentores por modo de um ficheiro docker-compose)  
+  
 ## Instruções
 O projeto implica não só o uso básico do código desenvolvido, mas o mesmo também deverá ser utilizado dentro de um ambiente de contentores (Docker ou Podman) para o qual existe a presença do ficheiro 'compose'.  
   
@@ -43,10 +43,10 @@ O VCS (Version Control System) do projeto foi configurado no final do seu desenv
   
 Histórico:  
 • Commit inicial de criação do ficheiro README.md  
-• rotas e sockets
-• fix ports
+• rotas e sockets  
+• fix ports  
 • Finalização do ficheiro README.md de relatório  
-
+  
 ## Dificuldades
 As principais dificuldades sentidas durante o período de trabalho tiveram origem em testar o trabalho por meio do ambiente de contentores da Docker Desktop, visto que este terá sido o principal componente de trabalho introduzido à lógica existente.  
 Mesmo assim, também houve um nível de dificuldade baseado na quantidade de tempo entre a criação inicial do trabalho de Programação Web e o trabalho atual de Computação Distríbuida.  
