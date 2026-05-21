@@ -22,7 +22,10 @@ Por fim, há o requesito da implementação de um dockerfile com uma solução '
 
 ## Estrutura de Ficheiros
 • Ficheiro README.md (Relatório de trabalho)
-• 
+• Pasta "docker_sockets"
+&nbsp • Pasta "servidor_docker_backend" (Ficheiros de backend do servidor, destinados para o seu próprio contentor)
+&nbsp • Pasta "servidor_docker_database" (Ficheiros da base de dados do servidor, destinados para o seu próprio contentor)
+&nbsp • Ficheiro "docker-compose.yaml" (Configurações de contentores por modo de um ficheiro docker-compose)
 
 ## Instruções
 O projeto implica não só o uso básico do código desenvolvido, mas o mesmo também deverá ser utilizado dentro de um ambiente de contentores (Docker ou Podman) para o qual existe a presença do ficheiro 'compose'.  
@@ -31,15 +34,17 @@ O projeto implica não só o uso básico do código desenvolvido, mas o mesmo ta
 • Descarregar a aplicação [Docker Desktop](https://www.docker.com/products/docker-desktop/)  
 ![Página de download para a aplicação Docker Desktop](https://i.imgur.com/LNmSqrW.png)  
 • Iniciar a aplicação Docker Desktop  
-• Configurar os contentores  
-•   
+• Iniciar um terminal (PowerShell) na pasta onde o ficheiro docker-compose.yaml estiver presente (neste caso, docker_sockets)
+• Neste terminal, correr o comando "docker compose up --build" (usos futuros do comando não necessitaram do parametro "--build")
+• Aceder à página pelo IP fornecido no terminal
 
 ## VCS e Histórico de Commits
 O VCS (Version Control System) do projeto foi configurado no final do seu desenvolvimento, tendo em conta a realização de trabalho for a do contexto de git.  
   
 Histórico:  
 • Commit inicial de criação do ficheiro README.md  
-• Transferência de todos os ficheiros do propósito prático (Trabalho proposto)  
+• rotas e sockets
+• fix ports
 • Finalização do ficheiro README.md de relatório  
 
 ## Dificuldades
