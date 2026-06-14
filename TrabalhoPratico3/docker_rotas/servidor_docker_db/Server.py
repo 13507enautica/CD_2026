@@ -137,6 +137,13 @@ def doLogin():
 
     return render_template("login.html", error="O email ou a senha estão incorretos!")
 
+
+@app.route('/dashboardmqtt')
+def dashboardmqtt():
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    return render_template('dashboardmqtt.html', user=session['user'])
+
 @app.route('/logout')
 def logout():
     session.pop('user', None)

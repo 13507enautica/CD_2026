@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard MQTT - Porto</title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        border:3px solid;
+        border-width: thing;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:first-child {
+        background-color: #193459;
+        color: #ffffff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Bem-vindo, {{ user.fullname }}</a></li>
+                <li><a href="/book-stay">Marcar Estadia</a></li>
+                <li><a href="/register-boat">Adicionar Navio</a></li>
+                {% if user.id < 6 %}
+                    <li><a href="/procura">Consultas</a></li>
+                {% endif %}
+                <li><a href="/logout">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Bem-vindo ao Dashboard</h1>
+        <div id="dashboardmqtt"></div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Porto. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+    async function atualizarDashboard() {
+        try {
+
+        const dashboardmqtt = document.getElementById("dashboardmqtt");
+        dashboardmqtt.innerHTML = '';
+
+        const table = document.createElement('table');
+        const tbody = document.createElement('tbody');
+
+        const tr = document.createElement('tr');
+        const th = document.createElement('th');
+        th.textContent = "Sensores"
+        tr.appendChild(th)
+        const td = document.createElement('td');
+        td.textContent = "Dados"
+        tr.appendChild(td)
+        tbody.appendChild(tr)
+
+        
+        table.appendChild(tbody);
+        dashboardmqtt.appendChild(table)
+
+    } catch (err) {
+        document.getElementById("dashboardmqtt").innerHTML = "Erro " + err;
+    }
+  }
+  atualizarDashboard();
+  setInterval(atualizarDashboard, 20000);
+
+</script>
+</body>
+</html>
