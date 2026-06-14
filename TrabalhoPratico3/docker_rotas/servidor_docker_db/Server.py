@@ -53,7 +53,8 @@ def register():
 
 @app.route('/procura')
 def procura():
-    return render_template('procura.html')  # Página de registro
+    return render_template('procura.html')  # Página de procura
+
 
 @app.route('/main')
 def main():
@@ -139,7 +140,7 @@ def doLogin():
 
 
 @app.route('/dashboardmqtt')
-def dashboardmqtt():
+def doDashboard():
     if 'user' not in session:
         return redirect(url_for('login'))
     return render_template('dashboardmqtt.html', user=session['user'])
