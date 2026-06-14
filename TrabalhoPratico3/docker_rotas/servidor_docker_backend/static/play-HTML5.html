@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+		
+        <title>Play video using HTML5</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link rel="stylesheet" type="text/css" href="/static/styles/GlobalStyle.css">
+		<link rel="stylesheet" type="text/css" href="/static/styles/Videos.css">
+    </head>
+
+    <body>
+	
+        <h1>Player with HTML5</h1>
+	
+        <div class="DBGVideoContainer MyVideoContainer">
+            <div class="DBGVideoPlayer MyVideoPlayer">
+                <video id="TheVideo" width="640" height="480" poster="/static/Videos/movie1.png" controls >
+                    <source src="/static/Videos/movie1.mp4" type="video/mp4" />
+                    <track 
+                        label="Português" kind="subtitles" srclang="pt" 
+                        src="/static/VTT/Subtitles/movie1-pt.vtt" default>
+                    <track 
+                        label="English" kind="subtitles" srclang="en" 
+                        src="/static/VTT/Subtitles/movie1-en.vtt">
+                    <track 
+                        label="Français" kind="subtitles" srclang="fr" 
+                        src="/static/VTT/Subtitles/movie1-fr.vtt">
+                    Your browser does not support HTML5 Video Tag
+                </video>
+            </div>
+        </div>
+        
+        <p><a href='javascript:history.back()'>Back</a></p>
+
+    </body>
+
+</html>

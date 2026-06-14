@@ -1,0 +1,195 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "fullname": "João Pires",
+            "email": "joaopmp2002@gmail.com",
+            "password": "pires2702"
+        },
+        {
+            "id": 2,
+            "fullname": "João Pedro Moura Pires",
+            "email": "asfgasfasf@gmail.com",
+            "password": "teste12345"
+        },
+        {
+            "id": 3,
+            "fullname": "testeteste",
+            "email": "asfasfsafas@gmail.com",
+            "password": "testeteste"
+        },
+        {
+            "id": 4,
+            "fullname": "testetesteteste",
+            "email": "asfasfasfasfasf@gmail.com",
+            "password": "testeteste"
+        },
+        {
+            "id": 5,
+            "fullname": "Duarte Vale",
+            "email": "13507enautica.pweb@gmail.com",
+            "password": "123456789"
+        },
+        {
+            "id": 6,
+            "fullname": "Pedro Vingadas",
+            "email": "pedrocas@gmail.com",
+            "password": "pedropedro"
+        },
+        {
+            "id": 7,
+            "fullname": "Pedro",
+            "email": "pedrocvingadas@gmail.com",
+            "password": "Pedro123"
+        },
+        {
+            "id": 8,
+            "fullname": "car",
+            "email": "carlos.goncalves@isel.pt",
+            "password": "1qaz2wsx"
+        }
+    ],
+    "boats": [
+        {
+            "id": 1,
+            "name": "SS JJ",
+            "type": "pesca",
+            "registration_number": "209879",
+            "owner_name": "João Pires",
+            "year_built": 2002,
+            "length": 29.0,
+            "available": 1,
+            "user_id": 1,
+            "owner_email": "joaopmp2002@gmail.com"
+        },
+        {
+            "id": 2,
+            "name": "SS JJ4",
+            "type": "lancha",
+            "registration_number": "209870",
+            "owner_name": "João Pires",
+            "year_built": 2001,
+            "length": 30.0,
+            "available": 1,
+            "user_id": 1,
+            "owner_email": "joaopmp2002@gmail.com"
+        },
+        {
+            "id": 3,
+            "available": 1,
+            "owner_email": "joaopmp2002@gmail.com",
+            "name": "SS JJ4",
+            "type": "lancha",
+            "registration_number": "209879",
+            "owner_name": "João Pires",
+            "year_built": 2001,
+            "length": 124.0,
+            "boat_image": "download.jpg",
+            "user_id": 1
+        },
+        {
+            "id": 4,
+            "available": 1,
+            "owner_email": "pedrocvingadas@gmail.com",
+            "name": "Asdrubal",
+            "type": "pesca",
+            "registration_number": "123",
+            "owner_name": "Pedro",
+            "year_built": 2000,
+            "length": 20.0,
+            "boat_image": "transferir.jpeg",
+            "user_id": 7
+        },
+        {
+            "id": 5,
+            "available": 1,
+            "owner_email": "pedrocvingadas@gmail.com",
+            "name": "Asdrubal",
+            "type": "pesca",
+            "registration_number": "123",
+            "owner_name": "Pedro",
+            "year_built": 2000,
+            "length": 20.0,
+            "boat_image": "transferir.jpeg",
+            "user_id": 7
+        },
+        {
+            "id": 6,
+            "available": 1,
+            "owner_email": "carlos.goncalves@isel.pt",
+            "name": "n1",
+            "type": "iate",
+            "registration_number": "r1",
+            "owner_name": "car",
+            "year_built": 1900,
+            "length": 12.0,
+            "boat_image": "Leds.png",
+            "user_id": 8
+        },
+        {
+            "id": 7,
+            "available": 1,
+            "owner_email": "carlos.goncalves@isel.pt",
+            "name": "n3",
+            "type": "pesca",
+            "registration_number": "23",
+            "owner_name": "car",
+            "year_built": 1904,
+            "length": 34.0,
+            "boat_image": "Futsal.png",
+            "user_id": 8
+        }
+    ],
+    "ports": [
+        {
+            "id": 1,
+            "port_name": "Alpha",
+            "available": 1,
+            "boat_id": 0
+        },
+        {
+            "id": 2,
+            "port_name": "Beta",
+            "available": 1,
+            "boat_id": 0
+        },
+        {
+            "id": 3,
+            "port_name": "Charlie",
+            "available": 1,
+            "boat_id": 0
+        }
+    ],
+    "stays": [
+        {
+            "id": 1,
+            "boat_id": 1,
+            "description": "asfasfasfasf",
+            "passengers": 120,
+            "load_size": 50.0,
+            "port_id": 1,
+            "arrival_time": "2025-01-24T19:17",
+            "departure_time": "2025-01-21T19:17",
+            "location": {
+                "latitude": "52.52007",
+                "longitude": "13.4049.54"
+            },
+            "user_id": 1
+        },
+        {
+            "id": 2,
+            "boat_id": 6,
+            "description": "carga",
+            "passengers": 1,
+            "load_size": 0,
+            "port_id": 2,
+            "arrival_time": "2025-02-01T12:22",
+            "departure_time": "2025-02-06T12:34",
+            "location": {
+                "latitude": "39.37141142924911",
+                "longitude": "-9.351135143446982"
+            },
+            "user_id": 8
+        }
+    ]
+}

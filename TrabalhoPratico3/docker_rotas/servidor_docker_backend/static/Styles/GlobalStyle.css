@@ -1,0 +1,25 @@
+body {
+    background-color:		azure;
+}
+
+h1 {
+    font-family:      		"lucida calligraphy", arial, 'sans serif'; 
+    color:					blueviolet;
+    text-align:				center;
+	margin-top:				48px;
+}
+
+h2 {
+    font-family:			"lucida calligraphy", arial, 'sans serif'; 
+    color:					blue;
+    text-align:       		center;
+}
+
+p {
+	margin-top:				12px;
+	text-align:     		center;
+}
+
+hr {
+	width:					80%;
+}

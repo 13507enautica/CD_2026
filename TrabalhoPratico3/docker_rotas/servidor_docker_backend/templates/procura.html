@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Barcos e Estadias</title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .logotipo {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .lista_opcoes {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .lista_opcoes li {
+            margin-left: 20px;
+        }
+
+        .lista_opcoes a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .lista_opcoes a:hover {
+            color: #007BFF;
+        }
+
+        .contentor_centro {
+            flex: 1;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        #email-field, #date-field {
+            margin-top: 15px;
+        }
+    </style>
+    <script>
+        function toggleFormFields() {
+            const queryType = document.getElementById('query-type').value;
+            const emailField = document.getElementById('email-field');
+            const emailInput = document.getElementById('email');
+            const dateField = document.getElementById('date-field');
+            const stayDateInput = document.getElementById('stay-date');
+
+            if (queryType === 'boat') {
+                emailField.style.display = 'block';
+                emailInput.disabled = false;
+                emailInput.required = true;
+
+                dateField.style.display = 'none';
+                stayDateInput.disabled = true;
+                stayDateInput.required = false;
+            } else if (queryType === 'stay') {
+                emailField.style.display = 'none';
+                emailInput.disabled = true;
+                emailInput.required = false;
+
+                dateField.style.display = 'block';
+                stayDateInput.disabled = false;
+                stayDateInput.required = true;
+            } else {
+                emailField.style.display = 'none';
+                emailInput.disabled = true;
+                emailInput.required = false;
+
+                dateField.style.display = 'none';
+                stayDateInput.disabled = true;
+                stayDateInput.required = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <img class="logotipo" src="/static/Styles/logotipo.png" alt="Logotipo">
+            <ul>
+                <li><a href="/main">Início</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contentor_centro">
+        <h1>Consulta de Barcos e Estadias</h1>
+
+        <section>
+            <form id="query-form" method="GET">
+                <label for="query-type">Selecione o Tipo de Consulta:</label>
+                <select id="query-type" name="query_type" onchange="toggleFormFields()" required>
+                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option value="boat">Consultar Barcos</option>
+                    <option value="stay">Consultar Estadias</option>
+                </select>
+
+                <div id="email-field" style="display: none;">
+                    <label for="email">Digite o E-mail do Proprietário:</label>
+                    <input type="email" id="email" name="email" disabled>
+                    <button type="submit" formaction="/searchBoat">Consultar</button>
+                </div>
+
+                <div id="date-field" style="display: none;">
+                    <label for="stay-date">Digite a Data (YYYY-MM-DD):</label>
+                    <input type="date" id="stay-date" name="stay_date" disabled>
+                    <button type="submit" formaction="/searchStay">Consultar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Porto. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
