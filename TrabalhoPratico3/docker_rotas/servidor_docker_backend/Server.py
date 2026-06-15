@@ -377,9 +377,7 @@ def doBookStay():
 
 @app.route("/getSensors", methods=['GET'])
 def getSensors():
-    logging.debug("A testar sensores...: {readings}")
     logging.debug(readings)
-   
     if readings:
         return jsonify({"temperature": readings["temperature"], "humidity": readings["humidity"]})
     else:

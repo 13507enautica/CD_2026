@@ -57,12 +57,7 @@
     async function atualizarDashboard() {
         try {
 
-        const url = '/getSensors';
-        const response = await fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            });
+        
 
         const dashboardmqtt = document.getElementById("dashboardmqtt");
         dashboardmqtt.innerHTML = '';
@@ -72,26 +67,32 @@
 
         const tr = document.createElement('tr');
         const th = document.createElement('th');
-        th.textContent = "Sensores"
-        tr.appendChild(th)
+        th.textContent = "Sensores";
+        tr.appendChild(th);
         const td = document.createElement('td');
-        td.textContent = "Dados"
-        tr.appendChild(td)
-        tbody.appendChild(tr)
+        td.textContent = "Dados";
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+        const url = '/getSensors';
+        const response = await fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                Object.entries(data).forEach(([sensor, valor]) => {
+                    const tr_s = document.createElement('tr');
+                    const th_s = document.createElement('th');
+                    th_s.textContent = sensor;
+                    tr_s.appendChild(th_s);
+                    const td_s = document.createElement('td');
+                    td_s.textContent = valor;
+                    tr_s.appendChild(td_s);
+                    tbody.appendChild(tr_s);
+                });
+            });
         
-        for (let i = 0; i < 3; i++) {
-            const tr_s = document.createElement('tr');
-            const th_s = document.createElement('th');
-            th_s.textContent = "Sensor"+String(i)
-            tr_s.appendChild(th_s)
-            const td_s = document.createElement('td');
-            td_s.textContent = "Dado"+String(i)
-            tr_s.appendChild(td_s)
-            tbody.appendChild(tr_s)
-        }
         
         table.appendChild(tbody);
-        dashboardmqtt.appendChild(table)
+        dashboardmqtt.appendChild(table);
 
     } catch (err) {
         document.getElementById("dashboardmqtt").innerHTML = "Erro " + err;
