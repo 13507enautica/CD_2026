@@ -1,23 +1,21 @@
-# Trabalho Prático Fase 2 (Grupo 9)  
+# Trabalho Prático Fase 3 (Grupo 9)  
   
 Curso : Computação Distribuída  
 Grupo: 9  
 Estudantes Autores : Duarte Vale Nº13507, Guilherme Bento Nº13744  
-Date : 23/04/2026  
+Date : 15/06/2026  
 Repository URL : Link(https://github.com/13507enautica/CD_2026)  
 ---
 
 
 ## Introdução
-Este relatório descreve a segunda fase do projeto final da unidade curricular de Computação Distribuída, para o qual se pretende continuar a adaptação do projeto final de Programação Web para este mesmo funcionar através de um ambiente de contentores. Distinguido da abordagem da primeira fase, a comunicação entre servidores não é realizada por sockets, mas sim por uma API REST.  
+Este relatório descreve a terceira e última fase do projeto final da unidade curricular de Computação Distribuída, para o qual se pretende finalizar a adaptação do projeto final de Programação Web para este mesmo funcionar através de um ambiente de contentores, desta vez com a interface de uma dashboard por parte front-end do trabalho para verificar continuamente uma série de sensores e atuadores IoT (Internet of Things).  
 
 
 ## Metodologia
 O trabalho original para a unidade curricular de Programação Web (2024/2025) há sido realizado pelo Grupo 12 do suposto ano letivo (João Pires, Duarte Vale, Francisca Ricardo, Pedro Vingadas) com o propósito de gestão de uma rede de embarcações e estadías náuticas num porto escolar fictício.  
   
-Esta fase do trabalho visa ainda o ambito de alterar o trabalho prático do semestre passado (ano passado neste caso) de modo a separar a funcionalidade original do servidor Python entre os seus components de gestão de dados e serviços de backend.  
-Estes dois servidores comunicam entre sí, exclusivamente por modo de mensagens no formato JSON, para que a informação da base de dados necessária para a devida página não seja acedida diretamente por um único servidor.  
-Por fim, há o requesito da implementação de um dockerfile com uma solução 'compose' de modo a que os servidores desenvolvidos possam ser instanciados em contentores pela aplicação, onde apenas o contentor web consegue ser acedido pelo dado host.  
+Esta fase do trabalho visa ainda o ambito de alterar o trabalho prático do semestre passado (ano passado neste caso), mas foca-se principalmente na implementação da leitura de sensores e atuadores com base em tópicos MQTT (Message Queuing Telemetry Transport), para o qual foi desenvolvida uma página única pelo front-end da aplicação que demonstra os dados disponibilizados pelo devido tópico fornecido, onde os seus valores serão atualizados a cada 20 segundos de presença na página. Deste modo, a informação dada mantêm-se relativamente consistente com a informação que o dado sensor disponibiliza.  
 
 
 ## Estrutura de Ficheiros
@@ -39,18 +37,18 @@ O projeto implica não só o uso básico do código desenvolvido, mas o mesmo ta
 • Aceder à página pelo IP fornecido no terminal  
 
 ## VCS e Histórico de Commits
-O VCS (Version Control System) do projeto foi configurado no final do seu desenvolvimento, tendo em conta a realização de trabalho for a do contexto de git.  
-  
+O controlo de versões foi utilizado de forma frequente durante a realização do trabalho.  
 Histórico:  
-• Commit inicial  
-• rotas e sockets  
-• fix ports  
-• Reconfiguração da estrutura de ficheiros para dividir fases  
-• Configuração do ficheiro README.md de relatório  
+• configuração esqueleto de tabela de sensores  
+• correção de erros para dashboard  
+• mqtt backend  
+• tentativa de leitura de sensores mqtt  
+• fix docker routes and js paths  
+• dashboard para sensores mqtt  
 
 ## Dificuldades
-O principal desafio para a conclusão desta fase teve origem no desenvolvimento da página de marcação de estadias para embarcações, que apresentou várias dificuldades em encontrar os componentes necessários para carregar a página em si.  
+Tendo em conta o tópico de trabalho para esta fase, as maiores dificuldades encontradas no período de trabalho foram no acesso e leitura dos dados disponíveis pela série de sensores MQTT, principalmente em alturas onde estes não estavam ainda disponíveis, tendo que dificulta a verificação da funcionalidade do código que os lê.  
 
 
 ## Possíveis Melhorias
-A implementação de testes para componentes individuais de modo a conseguir identificar e/ou justificar erros por parte das páginas que demonstram/obtêm informação por meio da base de dados.  
+A leitura, de forma dinâmica, de uma série de tópicos MQTT, para gerar uma série de tabelas de dados em vez de uma única tabela, para o qual se verificaria todos os campos num formato semelhante ao que foi implementado nesta entrega.  
