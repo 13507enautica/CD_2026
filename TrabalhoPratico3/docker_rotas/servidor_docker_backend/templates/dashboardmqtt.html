@@ -30,6 +30,9 @@
     tr:nth-child(even) {
         background-color: #dddddd;
     }
+    h3 {
+        font-family: arial, sans-serif;
+    }
 </style>
 
 <body>
@@ -61,6 +64,15 @@
 
         const dashboardmqtt = document.getElementById("dashboardmqtt");
         dashboardmqtt.innerHTML = '';
+        
+        const titulo = document.createElement('h3');
+        const topico = await fetch("/getTopics")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                titulo.textContent = data
+            });
+        dashboardmqtt.appendChild(titulo);
 
         const table = document.createElement('table');
         const tbody = document.createElement('tbody');

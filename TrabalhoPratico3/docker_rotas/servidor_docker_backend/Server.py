@@ -375,6 +375,14 @@ def doBookStay():
     logging.debug(f"Stay booked successfully: {new_stay}")
     return redirect('/book-stay')
 
+@app.route("/getTopics", methods=['GET'])
+def getTopics():
+    logging.debug(MQTT_TOPIC)
+    if MQTT_TOPIC:
+        return jsonify(MQTT_TOPIC)
+    else:
+        return jsonify(-1)
+
 @app.route("/getSensors", methods=['GET'])
 def getSensors():
     logging.debug(readings)
