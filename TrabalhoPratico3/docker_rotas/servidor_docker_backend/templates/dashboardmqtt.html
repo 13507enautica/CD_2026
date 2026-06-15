@@ -57,6 +57,11 @@
     async function atualizarDashboard() {
         try {
 
+        const url = 'http://localhost:5001/getSensores';
+        const response = await fetch(url);
+        const responsejson = response.json();
+        console.log(response);
+
         const dashboardmqtt = document.getElementById("dashboardmqtt");
         dashboardmqtt.innerHTML = '';
 

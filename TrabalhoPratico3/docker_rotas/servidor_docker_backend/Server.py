@@ -1,4 +1,5 @@
 from flask import Flask, redirect, request, render_template, jsonify, url_for, session
+from flask_cors import CORS
 from werkzeug.security import generate_password_hash
 import logging
 import json
@@ -10,6 +11,7 @@ import paho.mqtt.client as mqtt
 
 # Configuração do Flask
 app = Flask(__name__)
+CORS(app)
 app.secret_key = 'bolachinha'  # Necessária para usar sessões
 app.url_map.strict_slashes = False
 app.config['JSON_AS_ASCII'] = False
@@ -57,6 +59,9 @@ def on_message(client, userdata, msg):
 
 def on_connect(client, userdata, flags, rc, properties=None):
     client.subscribe(MQTT_TOPIC)
+
+
+
 @app.route('/')
 def home():
     return render_template('index.html')  # Página principal
@@ -372,14 +377,14 @@ def doBookStay():
 
 @app.route("/getSensors", methods=['GET'])
 def getSensors():
+    logging.debug("A testar sensores...: {readings}")
+    logging.debug(readings)
+   
     if readings:
-        return {"temperature": readings["temperature"], "humidity": readings["humidity"]}
+        return jsonify({"temperature": readings["temperature"], "humidity": readings["humidity"]})
     else:
-        return {"temperature": -1, "humidity": -1}
+        return jsonify({"temperature": -1, "humidity": -1})
 
-@app.route("/sensorInfo", methods=['GET'])
-def sensorInfo():
-    return render_template("dashboardmqtt.html")
 
 if __name__ == "__main__":
     client = mqtt.Client()
