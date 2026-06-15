@@ -6,6 +6,11 @@ services:
     environment:
       DATABASE_PORT: 5000
       SERVER_PORT: 5001
+      MQTT_SERVER: cjsg.ddns.net
+      MQTT_PORT: 1883
+      MQTT_USERNAME: cd
+      MQTT_PASSWORD: 1qaz"WSX
+      MQTT_TOPIC: /weather
     ports:
       - "5001:5001"
     depends_on:

@@ -6,6 +6,7 @@ import os
 import re
 import requests
 from datetime import datetime
+import paho.mqtt.client as mqtt
 
 # Configuração do Flask
 app = Flask(__name__)
@@ -16,6 +17,13 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 db_port = int(os.getenv("DATABASE_PORT"))
 server_port = int(os.getenv("SERVER_PORT"))
+MQTT_SERVER = os.getenv("MQTT_SERVER")
+MQTT_PORT = int(os.getenv("MQTT_PORT"))
+MQTT_USER = os.getenv("MQTT_USERNAME")
+MQTT_PASSWORD = os.getenv("MQTT_PASSWORD")
+MQTT_TOPIC = os.getenv("MQTT_TOPIC")
+
+readings = None
 
 DATABASE_URL = f"http://database:{db_port}"
 
@@ -43,6 +51,12 @@ def listFiles(directory, extension):
 # Configuração de logging
 logging.basicConfig(level=logging.DEBUG)
 
+def on_message(client, userdata, msg):
+    global readings
+    readings = json.loads(msg.payload.decode())
+
+def on_connect(client, userdata, flags, rc, properties=None):
+    client.subscribe(MQTT_TOPIC)
 @app.route('/')
 def home():
     return render_template('index.html')  # Página principal
@@ -356,5 +370,23 @@ def doBookStay():
     logging.debug(f"Stay booked successfully: {new_stay}")
     return redirect('/book-stay')
 
+@app.route("/getSensors", methods=['GET'])
+def getSensors():
+    if readings:
+        return {"temperature": readings["temperature"], "humidity": readings["humidity"]}
+    else:
+        return {"temperature": -1, "humidity": -1}
+
+@app.route("/sensorInfo", methods=['GET'])
+def sensorInfo():
+    return render_template("dashboardmqtt.html")
+
 if __name__ == "__main__":
+    client = mqtt.Client()
+    client.username_pw_set(MQTT_USER, MQTT_PASSWORD)
+    client.on_message = on_message
+    client.on_connect = on_connect
+    client.connect(MQTT_SERVER, MQTT_PORT)
+    client.loop_start()
+
     app.run(host="0.0.0.0", port=int(server_port))
