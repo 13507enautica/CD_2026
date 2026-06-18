@@ -61,6 +61,13 @@ Histórico:
 • rotas e sockets  
 • fix ports  
 • Finalização do ficheiro README.md de relatório  
+
+## Clarificação de Uso de Inteligência Artificial
+Numa tentativa de manter a lógica do trabalho fiel à criada por nós o uso de inteligência artificial no trabalho foi limitado apenas aos propósitos de debug e resumo de documentação para algumas bibliotecas.  
+  
+## Resultados  
+<img src="https://i.imgur.com/2gtjMR8.png" alt="Resultados por Docker" width="400" height="300">  
+<img src="imagens/landing_page.png" alt="Landing page da aplicação implementada">  
   
 ## Dificuldades
 As principais dificuldades sentidas durante o período de trabalho tiveram origem em testar o trabalho por meio do ambiente de contentores da Docker Desktop, visto que este terá sido o principal componente de trabalho introduzido à lógica existente.  
