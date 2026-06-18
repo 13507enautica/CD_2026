@@ -50,7 +50,7 @@ docker compose down
 `````
   
 ## Clarificação de Uso de Inteligência Artificial
-por escrever  
+Numa tentativa de manter a lógica do trabalho fiel à criada por nós o uso de inteligência artificial no trabalho foi limitado apenas aos propósitos de debug e resumo de documentação para algumas bibliotecas.  
   
 ## Resultados (Projeto Final)
 por fazer  
