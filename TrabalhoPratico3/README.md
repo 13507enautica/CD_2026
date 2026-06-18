@@ -60,6 +60,13 @@ Histórico:
 • tentativa de leitura de sensores mqtt  
 • fix docker routes and js paths  
 • dashboard para sensores mqtt  
+  
+## Clarificação de Uso de Inteligência Artificial
+Numa tentativa de manter a lógica do trabalho fiel à criada por nós o uso de inteligência artificial no trabalho foi limitado apenas aos propósitos de debug e resumo de documentação para algumas bibliotecas.  
+  
+## Resultados
+Este trabalho visou a implementação de uma *dashboard* para demonstrar dados recebidos através do protocolo *MQTT* provenientes dos sensores de uma estação meteorológica. Os resultados culminaram na seguinte página que apresenta os dados em tempo real.  
+<img src="imagens/dashboard_mqtt.png" alt="Dashboard para apresentação dos dados recolhidos">  
 
 ## Dificuldades
 Tendo em conta o tópico de trabalho para esta fase, as maiores dificuldades encontradas no período de trabalho foram no acesso e leitura dos dados disponíveis pela série de sensores MQTT, principalmente em alturas onde estes não estavam ainda disponíveis, tendo que dificulta a verificação da funcionalidade do código que os lê.  
