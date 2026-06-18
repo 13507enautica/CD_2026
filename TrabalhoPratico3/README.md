@@ -25,16 +25,31 @@ Esta fase do trabalho visa ainda o ambito de alterar o trabalho prático do seme
 - | Pasta "servidor_docker_db" (Ficheiros da base de dados do servidor, destinados para o seu próprio contentor)  
 - | Ficheiro "docker-compose.yaml" (Configurações de contentores por modo de um ficheiro docker-compose)  
 
-## Instruções
-O projeto implica não só o uso básico do código desenvolvido, mas o mesmo também deverá ser utilizado dentro de um ambiente de contentores (Docker ou Podman) para o qual existe a presença do ficheiro 'compose'.  
+## Instruções de Uso
+O projeto (com exceção do trabalho das aulas 1 e 2) implica não só o uso básico do código desenvolvido, mas o mesmo também deverá ser utilizado dentro de um ambiente de contentores (Docker ou Podman) para o qual existe a presença do ficheiro 'compose'.  
   
 • Descarregar o código de projeto presente no repositório  
 • Descarregar a aplicação [Docker Desktop](https://www.docker.com/products/docker-desktop/)  
-![Página de download para a aplicação Docker Desktop](https://i.imgur.com/LNmSqrW.png)  
+<img src="https://i.imgur.com/LNmSqrW.png" alt="Página de download para a aplicação Docker Desktop" width="400" height="200">  
 • Iniciar a aplicação Docker Desktop  
 • Iniciar um terminal (PowerShell) na pasta onde o ficheiro docker-compose.yaml estiver presente (neste caso, docker_sockets)  
-• Neste terminal, correr o comando "docker compose up --build" (usos futuros do comando não necessitaram do parametro "--build")  
-• Aceder à página pelo IP fornecido no terminal  
+<img src="https://i.imgur.com/VsQviWe.png" alt="Exemplo de como abrir o terminal pretendido" width="300" height="200">  
+• Neste terminal, correr o comando:
+`````docker
+docker compose up --build
+`````
+(usos futuros do comando não necessitaram do parametro "--build")  
+  
+• Aceder à página pelo IP fornecido no terminal __OU__ pela aplicação Docker Desktop (específicamente pelo contentor associado ao __backend__)  
+  
+<img src="https://i.imgur.com/8x7EjjI.png" alt="IP de exemplo" width="400" height="200">  
+<img src="https://i.imgur.com/rfSOwIF.png" alt="Exemplo de Docker Desktop" width="1000" height="100">  
+  
+• Para terminar o seu uso, utilizar o comando:
+`````docker
+docker compose down
+`````
+  
 
 ## VCS e Histórico de Commits
 O controlo de versões foi utilizado de forma frequente durante a realização do trabalho.  
