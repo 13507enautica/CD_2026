@@ -16,13 +16,13 @@ Relatório de Trabalho Prático para a Unidade Curricular de Computação Distr�
 3) [Trabalho 3](https://github.com/13507enautica/CD_2026/tree/main/TrabalhoPratico3)  
   
 ## Introdução
-texto introdutório  
+Este repositório serve para o trabalho académico realizado para a unidade curricular de Computação Distríbuida, principalmente o projeto final da devida unidade. O projeto implica o foco em comunicação de sistemas virtuais num modelo cliente/servidor através de sockets/rotas, a contentorização de aplicações Web, a implementação de serviços Web e a leitura de informação por sensores IoT. Cada trabalho prático por pasta inclui a sua própria descrição e abordagem prática, bem como as suas devidas instruções de uso.
   
 ## Estrutura de Ficheiros
-- Pasta "Aulas1e2"
-- Pasta "TrabalhoPratico1"  
-- Pasta "TrabalhoPratico2"  
-- Pasta "TrabalhoPratico3"  
+- Pasta "Aulas1e2" (Interface entre programas através de sockets, com um foco em heterogeneidade entre linguagens)  
+- Pasta "TrabalhoPratico1" (Divisão da lógica do projeto e contentorização dos seus componentes)  
+- Pasta "TrabalhoPratico2" (Comunicação de sistemas por rotas, implementação API REST)  
+- Pasta "TrabalhoPratico3" (Dashboard por front-end para leitura de sensores IoT, tópicos MQTT)  
   
 ## Instruções de Uso
 O projeto (com exceção do trabalho das aulas 1 e 2) implica não só o uso básico do código desenvolvido, mas o mesmo também deverá ser utilizado dentro de um ambiente de contentores (Docker ou Podman) para o qual existe a presença do ficheiro 'compose'.  
@@ -56,4 +56,4 @@ Numa tentativa de manter a lógica do trabalho fiel à criada por nós o uso de 
 por fazer  
   
 ## Conclusões
-conclusões do trabalho  
+A concretização do trabalho foi um sucesso relativo em questão de realizar os objetivos principalmente propostos pelos enunciados da unidade curricular de Computação Distríbuida. Contudo, a implementação final do projeto deixou em falta aspetos cruciais como a implentação do SwaggerAPI. Verifica-se também que o simples foco na realização destes objetivos deixa por parte a possibilidade de rotas alternativas/extra.  
