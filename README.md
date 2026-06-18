@@ -53,7 +53,9 @@ docker compose down
 Numa tentativa de manter a lógica do trabalho fiel à criada por nós o uso de inteligência artificial no trabalho foi limitado apenas aos propósitos de debug e resumo de documentação para algumas bibliotecas.  
   
 ## Resultados (Projeto Final)
-por fazer  
+### Trabalhos 1 e 2
+Os trabalhos 1 e 2 foram focados na re-implementação do *backend* do projeto para utilização de *sockets* e rotas, respetivamente, pelo que apenas varia a sua implementação produzindo resultados idênticos.
+<img src="imagens/landing_page.png" alt="Landing page da aplicação implementada">
   
 ## Conclusões
 A concretização do trabalho foi um sucesso relativo em questão de realizar os objetivos principalmente propostos pelos enunciados da unidade curricular de Computação Distríbuida. Contudo, a implementação final do projeto deixou em falta aspetos cruciais como a implentação do SwaggerAPI. Verifica-se também que o simples foco na realização destes objetivos deixa por parte a possibilidade de rotas alternativas/extra.  
