@@ -62,6 +62,15 @@ Histórico:
 • fix ports  
 • Reconfiguração da estrutura de ficheiros para dividir fases  
 • Configuração do ficheiro README.md de relatório  
+  
+
+## Clarificação de Uso de Inteligência Artificial
+Numa tentativa de manter a lógica do trabalho fiel à criada por nós o uso de inteligência artificial no trabalho foi limitado apenas aos propósitos de debug e resumo de documentação para algumas bibliotecas.  
+  
+## Resultados  
+<img src="https://i.imgur.com/2gtjMR8.png" alt="Resultados por Docker" width="400" height="300">  
+<img src="imagens/landing_page.png" alt="Landing page da aplicação implementada">  
+  
 
 ## Dificuldades
 O principal desafio para a conclusão desta fase teve origem no desenvolvimento da página de marcação de estadias para embarcações, que apresentou várias dificuldades em encontrar os componentes necessários para carregar a página em si.  
